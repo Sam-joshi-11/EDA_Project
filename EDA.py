@@ -75,3 +75,12 @@ print("Find the Outliers of Age:")
 outliers = df[df['Age']>100]
 print("Found Outliers(s):")
 print(outliers)
+
+Q1 = df['Age'].quantile(0.25)
+Q3 = df['Age'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5*IQR
+upper_bound = Q3 + 1.5*IQR
+
+Outliers = df[(df['Age']<lower_bound)|(df['Age']>upper_bound)]
+print(Outliers)
